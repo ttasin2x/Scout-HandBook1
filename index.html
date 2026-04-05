@@ -95,29 +95,37 @@
         .dropdown-content a:hover { background-color: #f8fafc; color: var(--purple); }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* 2 & 3. HERO SECTION */
+        /* 2 & 3. HERO SECTION (CENTERED & FULL) */
         .hero { padding: 40px 0 60px; position: relative; text-align: center; }
-        .hero h1 { font-size: 56px; margin-bottom: 30px; color: var(--purple); font-family: 'Inter', sans-serif; font-weight: 800;}
-        .hero-visual { display: flex; justify-content: center; align-items: center; margin-bottom: 40px; position: relative;}
+        .hero h1 { font-size: 56px; margin-bottom: 50px; color: var(--purple); font-family: 'Inter', sans-serif; font-weight: 800;}
+        
+        .hero-visual { 
+            display: flex; justify-content: center; align-items: center; 
+            margin: 0 auto 50px auto; position: relative; max-width: 380px; 
+        }
         .hero-circle {
-            position: absolute; width: 350px; height: 350px;
+            position: absolute; width: 450px; height: 450px;
             background: radial-gradient(circle, rgba(236,72,153,0.12) 0%, rgba(139,92,246,0.05) 100%);
             border-radius: 50%; border: 2px dashed rgba(139,92,246,0.3); z-index: 0;
             animation: spinBg 30s linear infinite;
         }
         @keyframes spinBg { 100% { transform: rotate(360deg); } }
-        .hero-visual img { position: relative; z-index: 1; border-radius: 12px; max-width: 280px; box-shadow: 0 30px 50px rgba(0,0,0,0.15); border: 8px solid var(--bg-white); }
+        .hero-visual img { 
+            position: relative; z-index: 1; border-radius: 12px; 
+            width: 100%; box-shadow: 0 30px 50px rgba(0,0,0,0.15); border: 8px solid var(--bg-white); 
+        }
 
-        /* RUNNING IMAGES MARQUEE */
+        /* RUNNING IMAGES MARQUEE (Bigger size, no author images) */
         .img-marquee-wrapper {
             background: var(--bg-white); padding: 40px 0; overflow: hidden; white-space: nowrap; position: relative;
             border-top: 1px dashed #e2e8f0; border-bottom: 1px dashed #e2e8f0; margin-bottom: 40px;
         }
         .img-marquee-content {
-            display: inline-block; animation: scrollImages 35s linear infinite;
+            display: inline-block; animation: scrollImages 25s linear infinite;
         }
         .img-marquee-content img {
-            display: inline-block; height: 220px; width: auto; margin-right: 30px;
+            display: inline-block; height: 320px; /* Made bigger */
+            width: auto; margin-right: 30px;
             border-radius: 12px; box-shadow: var(--shadow-sm); border: 4px solid var(--bg-white);
         }
         @keyframes scrollImages {
@@ -148,34 +156,12 @@
         .f-icon { width: 40px; height: 40px; flex-shrink: 0; background: rgba(139,92,246,0.1); color: var(--purple); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
         .f-text p { font-size: 17px; margin: 0; font-weight: 600; color: var(--text-dark);}
 
-        /* 7. LAUNCH (Detailed Description & 5-Image Gallery) */
+        /* 7. LAUNCH (Detailed Description - No Gallery) */
         .launch { padding: 80px 0; background: var(--bg-white); border-top: 1px dashed #e2e8f0;}
-        .launch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .launch-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto; text-align: justify; }
         .detail-list { list-style: none; margin: 20px 0; }
-        .detail-list li { margin-bottom: 18px; font-size: 16px; display: flex; gap: 12px; align-items: flex-start; text-align: justify;}
+        .detail-list li { margin-bottom: 18px; font-size: 16px; display: flex; gap: 12px; align-items: flex-start;}
         .detail-list li i { color: var(--purple); margin-top: 5px; font-size: 18px;}
-        
-        .launch-img-box { position: relative; padding: 20px;}
-        .arch-bg { position: absolute; bottom: -20px; right: -20px; width: 85%; height: 90%; background: var(--gradient); border-radius: 200px 200px 0 0; z-index: 0; }
-        
-        /* 5-Image Collage CSS */
-        .launch-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        .launch-gallery img {
-            width: 100%; height: 100%; object-fit: cover;
-            border-radius: 12px; box-shadow: var(--shadow-sm);
-            border: 3px solid var(--bg-white); transition: 0.3s;
-        }
-        .launch-gallery img:hover {
-            transform: scale(1.05); z-index: 2; box-shadow: var(--shadow-float);
-        }
-        .g-img-1 { grid-column: 1 / 3; height: 220px; }
-        .g-img-2, .g-img-3, .g-img-4, .g-img-5 { height: 130px; }
 
         /* 8, 9, 10, 11, 12. AUTHORS */
         .authors { background: var(--gradient); padding: 100px 0; }
@@ -183,8 +169,15 @@
         .authors-header h2 { color: var(--bg-white); font-size: 36px; margin-bottom: 10px; }
         
         .author-cards { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1000px; margin: 0 auto;}
-        .card { background: var(--bg-white); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-float); display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start;}
-        .card-img { width: 100%; height: 320px; border-radius: 16px; object-position: top; }
+        .card { background: var(--bg-white); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-float); display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start;}
+        
+        /* New Improved Author Image Container */
+        .author-img-container {
+            position: relative; padding: 6px; background: var(--gradient); border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.3);
+        }
+        .author-img-container img { width: 100%; height: 350px; border-radius: 16px; object-fit: cover; object-position: top; border: 4px solid var(--bg-white); }
+        
         .card h3 { font-size: 28px; margin-bottom: 15px; color: var(--purple);}
         .card p { font-size: 16px; text-align: justify; margin-bottom: 15px; color: var(--text-dark);}
         
@@ -198,17 +191,16 @@
 
         /* RESPONSIVE */
         @media (max-width: 992px) {
-            .launch-grid, .card { grid-template-columns: 1fr; gap: 40px; }
-            .card { text-align: center; }
-            .card-img { max-width: 300px; margin: 0 auto; height: auto;}
+            .card { grid-template-columns: 1fr; text-align: center; }
+            .author-img-container { max-width: 320px; margin: 0 auto;}
             .detail-list li, .achievements-list li { text-align: left; }
             .achievements-list { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 40px; }
-            .img-marquee-content img { height: 160px; }
-            .g-img-1 { height: 180px; }
-            .g-img-2, .g-img-3, .g-img-4, .g-img-5 { height: 100px; }
+            .hero-visual { max-width: 280px; }
+            .hero-circle { width: 320px; height: 320px; }
+            .img-marquee-content img { height: 220px; }
         }
     </style>
 </head>
@@ -245,21 +237,17 @@
 
     <div class="img-marquee-wrapper">
         <div class="img-marquee-content">
-            <img src="./photos/inauguration1.webp" alt="Scout Event 1">
-            <img src="./photos/author-shipu.webp" alt="Shipu">
-            <img src="./photos/inauguration2.webp" alt="Scout Event 2">
             <img src="./photos/book-cover.webp" alt="Book Cover">
+            <img src="./photos/inauguration1.webp" alt="Scout Event 1">
+            <img src="./photos/inauguration2.webp" alt="Scout Event 2">
             <img src="./photos/inauguration3.webp" alt="Scout Event 3">
-            <img src="./photos/author-samin.webp" alt="Samin">
             <img src="./photos/inauguration4.webp" alt="Scout Event 4">
             <img src="./photos/inauguration5.webp" alt="Scout Event 5">
             
-            <img src="./photos/inauguration1.webp" alt="Scout Event 1">
-            <img src="./photos/author-shipu.webp" alt="Shipu">
-            <img src="./photos/inauguration2.webp" alt="Scout Event 2">
             <img src="./photos/book-cover.webp" alt="Book Cover">
+            <img src="./photos/inauguration1.webp" alt="Scout Event 1">
+            <img src="./photos/inauguration2.webp" alt="Scout Event 2">
             <img src="./photos/inauguration3.webp" alt="Scout Event 3">
-            <img src="./photos/author-samin.webp" alt="Samin">
             <img src="./photos/inauguration4.webp" alt="Scout Event 4">
             <img src="./photos/inauguration5.webp" alt="Scout Event 5">
         </div>
@@ -305,24 +293,11 @@
 
     <section class="launch">
         <div class="container launch-grid">
-            <div class="launch-text">
-                <ul class="detail-list">
-                    <li><i class="fa-solid fa-book-open-reader"></i> 📖 বাংলাদেশ স্কাউটস কর্তৃক অনুমোদিত ২৫০ পৃষ্ঠার রঙিন A4 সাইজের হার্ড কভারের এই বইটির আনুষ্ঠানিকভাবে মোড়ক উন্মোচন করেন বাংলাদেশ স্কাউটস-এর আহ্বায়ক জনাব মোঃ এহছানুল হক এবং সদস্য সচিব জনাব মীর মাহবুবুর রহমান স্নিগ্ধ। এ সময় আরো উপস্থিত ছিলেন এডহক কমিটির অন্যান্য সদস্যবৃন্দ, যুগ্ম আহবায়কগন, বাংলাদেশ স্কাউটসের নির্বাহী পরিচালক ও প্রফেশনাল স্কাউট এক্সিকিউটিভগণ।</li>
-                    <li><i class="fa-solid fa-mobile-screen"></i> বইটিতে ব্যবহৃত বিভিন্ন তথ্য ও রেফারেন্স বুক এই ওয়েবসাইটটি তে পাওয়া যাবে। সেই সাথে বইয়ের কিউআর কোড স্ক্যান করে ব্যবহারিক বিষয়গুলো দেখার জন্য ইউটিউব চ্যানেল ভিজিট করা যাবে। এরই মাধ্যমে কাব স্কাউট ও রোভাররা স্কাউটিং কে আরো ভালোভাবে জানার ও বুঝার সুযোগ পাবে।</li>
-                </ul>
-            </div>
-            
-            <div class="launch-img-box">
-                <div class="arch-bg"></div>
-                
-                <div class="launch-gallery">
-                    <img src="./photos/inauguration1.webp" class="g-img-1" alt="Inauguration 1">
-                    <img src="./photos/inauguration2.webp" class="g-img-2" alt="Inauguration 2">
-                    <img src="./photos/inauguration3.webp" class="g-img-3" alt="Inauguration 3">
-                    <img src="./photos/inauguration4.webp" class="g-img-4" alt="Inauguration 4">
-                    <img src="./photos/inauguration5.webp" class="g-img-5" alt="Inauguration 5">
-                </div>
-            </div>
+            <h2 style="font-size: 28px; text-align: center; color: var(--purple); margin-bottom: -10px;">বইটির বিস্তারিত তথ্য</h2>
+            <ul class="detail-list">
+                <li><i class="fa-solid fa-book-open-reader"></i> 📖 বাংলাদেশ স্কাউটস কর্তৃক অনুমোদিত ২৫০ পৃষ্ঠার রঙিন A4 সাইজের হার্ড কভারের এই বইটির আনুষ্ঠানিকভাবে মোড়ক উন্মোচন করেন বাংলাদেশ স্কাউটস-এর আহ্বায়ক জনাব মোঃ এহছানুল হক এবং সদস্য সচিব জনাব মীর মাহবুবুর রহমান স্নিগ্ধ। এ সময় আরো উপস্থিত ছিলেন এডহক কমিটির অন্যান্য সদস্যবৃন্দ, যুগ্ম আহবায়কগন, বাংলাদেশ স্কাউটসের নির্বাহী পরিচালক ও প্রফেশনাল স্কাউট এক্সিকিউটিভগণ।</li>
+                <li><i class="fa-solid fa-mobile-screen"></i> বইটিতে ব্যবহৃত বিভিন্ন তথ্য ও রেফারেন্স বুক এই ওয়েবসাইটটি তে পাওয়া যাবে। সেই সাথে বইয়ের কিউআর কোড স্ক্যান করে ব্যবহারিক বিষয়গুলো দেখার জন্য ইউটিউব চ্যানেল ভিজিট করা যাবে। এরই মাধ্যমে কাব স্কাউট ও রোভাররা স্কাউটিং কে আরো ভালোভাবে জানার ও বুঝার সুযোগ পাবে।</li>
+            </ul>
         </div>
     </section>
 
@@ -335,8 +310,8 @@
             <div class="author-cards">
                 
                 <div class="card">
-                    <div style="text-align: center;">
-                        <img src="./photos/author-shipu.webp" class="card-img" alt="মোঃ রাকিব হাসান শিপু">
+                    <div class="author-img-container">
+                        <img src="./photos/author-shipu.webp" alt="মোঃ রাকিব হাসান শিপু">
                     </div>
                     <div>
                         <h3>মোঃ রাকিব হাসান শিপু</h3>
@@ -366,8 +341,8 @@
                 </div>
 
                 <div class="card">
-                    <div style="text-align: center;">
-                        <img src="./photos/author-samin.webp" class="card-img" alt="মোঃ মুহতাদি মুয়িজুর রহমান (সামিন)">
+                    <div class="author-img-container">
+                        <img src="./photos/author-samin.webp" alt="মোঃ মুহতাদি মুয়িজুর রহমান (সামিন)">
                     </div>
                     <div>
                         <h3>মোঃ মুহতাদি মুয়িজুর রহমান (সামিন)</h3>
