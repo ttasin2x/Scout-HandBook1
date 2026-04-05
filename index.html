@@ -45,75 +45,56 @@
             100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
         }
 
-        /* FACEBOOK STYLE COVER SECTION */
-        .hero-cover {
-            position: relative;
-            width: 100vw;
-            height: 65vh; /* Adjust height based on preference */
-            min-height: 450px;
-            background-image: url('./photos/book-cover.webp');
-            background-size: cover;
-            background-position: center 20%; /* Centers the image nicely */
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Dark overlay so text is readable on top of the cover */
-        .hero-cover::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: 1;
-        }
-
-        /* TOP NAVBAR ON COVER */
-        .top-nav {
-            position: relative;
-            z-index: 10;
-            padding: 20px 0;
-            width: 100%;
+        /* HEADER */
+        header { 
+            background: var(--bg-white); 
+            padding: 15px 0; 
+            border-bottom: 1px solid #E2E8F0;
+            position: relative; z-index: 100;
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-        .logo img { width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .logo { font-size: 18px; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif;}
+        .logo img { width: 35px; height: 35px; border-radius: 50%; }
         
         /* 3 DOT MENU */
         .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background: none; border: none; font-size: 28px; cursor: pointer; color: #fff; padding: 5px 10px; transition: 0.3s; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-        .dropbtn:hover { color: var(--pink); }
+        .dropbtn { background: none; border: none; font-size: 26px; cursor: pointer; color: var(--text-dark); padding: 5px 10px; transition: 0.3s;}
+        .dropbtn:hover { color: var(--purple); }
         .dropdown-content { 
             display: none; position: absolute; right: 0; top: 100%;
             background-color: var(--bg-white); min-width: 220px;
             box-shadow: var(--shadow-float); z-index: 101; border-radius: 12px; overflow: hidden;
             border: 1px solid #E2E8F0;
-            margin-top: 10px;
         }
         .dropdown-content a { color: var(--text-dark); padding: 14px 20px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
         .dropdown-content a:hover { background-color: #f8fafc; color: var(--purple); }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* HERO TEXT AND BUTTON ON COVER */
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+        /* COMPACT COVER IMAGE SECTION */
+        .compact-cover {
+            width: 100%;
+            height: 250px; 
+            background-image: url('./photos/book-cover.webp');
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #f0f0f0; 
         }
-        .hero-title {
-            font-size: clamp(40px, 8vw, 70px);
-            color: #fff;
+
+        /* NEW HERO TEXT AND BUTTON SECTION */
+        .hero-text-and-button {
+            background-color: #fff;
+            padding: 60px 0; 
+            text-align: center;
+        }
+        .hero-text-and-button .hero-title {
+            color: var(--purple); 
             margin-bottom: 30px;
             font-family: 'Inter', sans-serif;
             font-weight: 800;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.6);
-            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: clamp(36px, 6vw, 56px); 
         }
 
         /* RUNNING IMAGES */
@@ -132,6 +113,27 @@
         .section-title span { color: var(--pink); }
         .intro-text { font-size: 18px; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto 40px; color: var(--text-dark); font-weight: 500;}
         
+        /* YOUTUBE VIDEO CONTAINER */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
         .highlights-box { max-width: 900px; margin: 0 auto 40px; }
         .highlights-box h4 { font-size: 22px; margin-bottom: 20px; color: var(--text-dark); text-align: center; }
         .highlights-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
@@ -170,8 +172,8 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-cover { height: 50vh; min-height: 350px; }
-            .hero-title { font-size: 42px; }
+            .compact-cover { height: 180px; }
+            .hero-text-and-button .hero-title { font-size: 38px; }
             .marquee-content img { height: 250px; }
             .achievements-list { grid-template-columns: 1fr; }
             .author-card { padding: 30px 20px; }
@@ -180,43 +182,41 @@
 </head>
 <body>
 
-    <section class="hero-cover" id="home">
-        
-        <header class="top-nav">
-            <div class="container nav-wrapper">
-                <a href="index.html" class="logo">
-                    <img src="./photos/logo.webp" alt="Logo"> Scout Handbook
-                </a>
-                
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <div class="dropdown-content">
-                        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                        <a href="scout-handbook.html"><i class="fa-solid fa-book"></i> SCOUT HANDBOOK</a>
-                    </div>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="./photos/logo.webp" alt="Logo"> Scout Handbook
+            </a>
+            
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                <div class="dropdown-content">
+                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="scout-handbook.html"><i class="fa-solid fa-book"></i> SCOUT HANDBOOK</a>
                 </div>
             </div>
-        </header>
-
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="hero-title">স্কাউট হ্যান্ডবুক</h1>
-                <a href="#purchase" class="btn btn-solid btn-glow"><i class="fa-solid fa-cart-shopping"></i> Purchase / ক্রয় করুন</a>
-            </div>
         </div>
+    </header>
 
+    <section class="compact-cover" id="home"></section>
+
+    <section class="hero-text-and-button">
+        <div class="container">
+            <h1 class="hero-title">স্কাউট হ্যান্ডবুক</h1>
+            <a href="#purchase" class="btn btn-solid btn-glow"><i class="fa-solid fa-cart-shopping"></i> Purchase / ক্রয় করুন</a>
+        </div>
     </section>
 
     <div class="marquee-container" id="marquee-wrapper">
         <div class="marquee-content" id="marquee-content">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
-            <img src="./photos/book-cover.webp" alt="Book Cover">
+            <img src="./photos/Inauguration1.webp" alt="Inauguration 1">
+            <img src="./photos/inauguration2.webp" alt="Inauguration 2">
+            <img src="./photos/inauguration3.webp" alt="Inauguration 3">
+            <img src="./photos/inauguration4.webp" alt="Inauguration 4">
+            <img src="./photos/inauguration5.webp" alt="Inauguration 5">
+            <img src="./photos/Inauguration1.webp" alt="Inauguration 1">
+            <img src="./photos/inauguration2.webp" alt="Inauguration 2">
+            <img src="./photos/inauguration3.webp" alt="Inauguration 3">
         </div>
     </div>
 
@@ -227,6 +227,10 @@
             <p class="intro-text">
                 স্কাউটার মোঃ রাকিব হাসান শিপু ও স্কাউটার সামিন রহমানের সংকলিত বই স্কাউটিংয়ের A to Z – “স্কাউট হ্যান্ডবুক”।
             </p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
 
             <div class="highlights-box">
                 <h4>এই বইয়ে তুলে ধরা হয়েছে:</h4>
