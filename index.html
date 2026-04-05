@@ -30,56 +30,80 @@
         /* BUTTONS */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px; 
-            padding: 15px 35px; border-radius: var(--radius-btn);
+            padding: 16px 35px; border-radius: var(--radius-btn);
             font-size: 18px; font-weight: 700; text-decoration: none; transition: 0.3s;
             cursor: pointer; border: none; font-family: 'Inter', 'Hind Siliguri', sans-serif;
         }
         .btn-solid { background: var(--gradient); color: var(--bg-white); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3); }
         .btn-solid:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5); }
-
-        /* 1, 2, 3: FULL SCREEN HERO SECTION */
-        .hero-section {
-            position: relative; width: 100vw; height: 100vh; min-height: 500px;
-            display: flex; align-items: center; justify-content: center;
-        }
         
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-        }
-        .hero-bg img {
-            width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.4);
+        /* GLOW ANIMATION FOR PURCHASE BUTTON */
+        .btn-glow { animation: pulse-glow 2s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
         }
 
-        /* HEADER (Top Overlay) */
+        /* HEADER */
         header { 
-            position: absolute; top: 0; left: 0; width: 100%; z-index: 100; padding: 25px 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            background: var(--bg-white); 
+            padding: 15px 0; 
+            border-bottom: 1px solid #E2E8F0;
+            position: relative; z-index: 100;
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         
-        /* Scout Handbook Logo Text (Small) */
-        .logo { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif;}
+        /* Scout Handbook Logo */
+        .logo { font-size: 18px; font-weight: 800; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif;}
+        .logo img { width: 35px; height: 35px; border-radius: 50%; }
         
         /* 3 DOT MENU */
         .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background: none; border: none; font-size: 26px; cursor: pointer; color: #fff; padding: 5px 10px; }
+        .dropbtn { background: none; border: none; font-size: 26px; cursor: pointer; color: var(--text-dark); padding: 5px 10px; transition: 0.3s;}
+        .dropbtn:hover { color: var(--purple); }
         .dropdown-content { 
             display: none; position: absolute; right: 0; top: 100%;
             background-color: var(--bg-white); min-width: 220px;
             box-shadow: var(--shadow-float); z-index: 101; border-radius: 12px; overflow: hidden;
+            border: 1px solid #E2E8F0;
         }
         .dropdown-content a { color: var(--text-dark); padding: 14px 20px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
         .dropdown-content a:hover { background-color: #f8fafc; color: var(--purple); }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* HERO CONTENT (Title & CTA) */
-        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; width: 100%; padding: 0 20px; }
-        .hero-content h1 { font-size: clamp(40px, 8vw, 70px); font-weight: 800; margin-bottom: 30px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Inter', sans-serif;}
+        /* HERO SECTION (Cover on top, Title, Glowing Button) */
+        .hero-section {
+            background: #FAFAFA;
+            padding: 40px 0 60px 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--purple);
+            margin-bottom: 30px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+        .hero-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            max-height: 450px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 5px solid var(--bg-white);
+        }
 
         /* RUNNING IMAGES (Only Book Cover, Bigger, Faster, Draggable) */
         .marquee-container {
             background: #fff; padding: 50px 0; overflow-x: auto; white-space: nowrap; 
-            cursor: grab; scrollbar-width: none; border-bottom: 1px solid #eee;
+            cursor: grab; scrollbar-width: none; border-bottom: 1px solid #eee; border-top: 1px solid #eee;
         }
         .marquee-container::-webkit-scrollbar { display: none; }
         .marquee-container:active { cursor: grabbing; }
@@ -134,7 +158,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 45px; }
+            .hero-title { font-size: 38px; }
             .marquee-content img { height: 250px; }
             .achievements-list { grid-template-columns: 1fr; }
             .author-card { padding: 30px 20px; }
@@ -143,30 +167,31 @@
 </head>
 <body>
 
-    <section class="hero-section" id="home">
-        <div class="hero-bg">
-            <img src="./photos/book-cover.webp" alt="Scout Handbook Cover Background">
-        </div>
-
-        <header>
-            <div class="container nav-wrapper">
-                <a href="index.html" class="logo">
-                    Scout Handbook
-                </a>
-                
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <div class="dropdown-content">
-                        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                        <a href="scout-handbook.html"><i class="fa-solid fa-book"></i> SCOUT HANDBOOK</a>
-                    </div>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="./photos/logo.webp" alt="Logo"> Scout Handbook
+            </a>
+            
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                <div class="dropdown-content">
+                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="scout-handbook.html"><i class="fa-solid fa-book"></i> SCOUT HANDBOOK</a>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div class="hero-content">
-            <h1>স্কাউট হ্যান্ডবুক</h1>
-            <a href="#purchase" class="btn btn-solid"><i class="fa-solid fa-cart-shopping"></i> Purchase / ক্রয় করুন</a>
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="hero-title">স্কাউট হ্যান্ডবুক</h1>
+            
+            <div class="hero-image-wrapper">
+                <img src="./photos/book-cover.webp" alt="Scout Handbook Cover">
+            </div>
+            
+            <a href="#purchase" class="btn btn-solid btn-glow"><i class="fa-solid fa-cart-shopping"></i> Purchase / ক্রয় করুন</a>
         </div>
     </section>
 
@@ -282,7 +307,7 @@
         let isDown = false;
         let startX;
         let scrollLeft;
-        let scrollSpeed = 2.5; // স্পিড বাড়ানো হয়েছে
+        let scrollSpeed = 2.5; 
 
         function autoScroll() {
             if(!isDown) {
@@ -295,7 +320,6 @@
         }
         requestAnimationFrame(autoScroll);
 
-        // Mouse Drag / Touch Swipe Control
         marquee.addEventListener('mousedown', (e) => {
             isDown = true; marquee.style.cursor = 'grabbing';
             startX = e.pageX - marquee.offsetLeft; scrollLeft = marquee.scrollLeft;
@@ -308,7 +332,6 @@
             marquee.scrollLeft = scrollLeft - (x - startX) * 2;
         });
         
-        // Touch events for mobile manual scrolling
         marquee.addEventListener('touchstart', () => { isDown = true; });
         marquee.addEventListener('touchend', () => { isDown = false; });
     </script>
